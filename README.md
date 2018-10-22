@@ -1,24 +1,18 @@
-# README
+# Install
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+rails db:create
+rails db:migrate
 
-Things you may want to cover:
+rails s
+```
 
-* Ruby version
+`/users/'` - Users list
 
-* System dependencies
+# The task
 
-* Configuration
+1. Improve the existing code as much as possible.
+2. Track of all the email addresses a user has had in its history and display it on the user page.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+There is no need to make the html pretty. It's okay as it is now.
+Feel free to alter database tables, add new gems and files. We expect the code to be production ready.
