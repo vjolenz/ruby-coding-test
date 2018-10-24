@@ -1,11 +1,17 @@
 # Install
 
 ```
+cp .env.example .env
+update .env file according to your environment
 rails db:create
 rails db:migrate
 
 rails s
 ```
+
+## Heroku
+https://pure-headland-75470.herokuapp.com/
+
 
 `/users/'` - Users list
 

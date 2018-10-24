@@ -6,14 +6,23 @@
 </p>
 
 <p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
 </p>
 
 <p>
   <strong>Last name:</strong>
   <%= @user.last_name %>
 </p>
+
+<strong>All mails used by <%= @user.first_name %> <%= @user.last_name %>:</strong>
+<ul>
+  <% all_emails_used_by(@user).each do |email|%>
+    <li>
+      <%= email%>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 
 <h1>Users</h1>
 
@@ -6,7 +7,7 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Firstname</th>
+      <th>First name</th>
       <th>Last name</th>
       <th colspan="3"></th>
     </tr>
@@ -16,11 +17,13 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.firstname %></td>
+        <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% unless user.admin? %>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

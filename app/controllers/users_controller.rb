@@ -22,19 +22,29 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.create(user_params)
-    redirect_to @user, notice: 'User was successfully created.'
+    if @user.save
+      redirect_to @user, notice: 'User was successfully created.'
+    else
+      render 'new'
+    end
   end
 
   # PATCH/PUT /users/1
   def update
-    @user.update(user_params)
-    redirect_to @user, notice: 'User was successfully updated.'
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render 'edit'
+    end
   end
 
   # DELETE /users/1
   def destroy
-    @user.destroy unless @user.is_admin?
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    if @user.destroy
+      redirect_to users_url, notice: 'User was successfully destroyed.'
+    else
+      redirect_to users_url, alert: "User couldn't be destroyed. Reason: #{@user.errors.full_messages.join(' ,')}"
+    end
   end
 
   private
@@ -44,6 +54,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :last_name)
+    params.require(:user).permit(:email, :first_name, :last_name)
   end
 end
